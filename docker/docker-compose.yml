@@ -1,0 +1,16 @@
+
+services:
+  bot:
+    build:
+      context: ..
+      dockerfile: docker/dockerfiles/DockerfileBot
+      args:
+        - --no-cache
+    container_name: bot_et
+    volumes:
+      - ../bot:/app
+      - ../logs/bot:/app/logs
+#    restart: unless-stopped
+
+    env_file:
+      - .env

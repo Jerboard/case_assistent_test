@@ -1,0 +1,14 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+.cache
+*.mo
+*.pot
+*.log
+db.sqlite3
+db.sqlite3-journal
+.env
+.venv
+.idea/
+*.json
+/temp
+/bot/data/vector

@@ -1,0 +1,14 @@
+aiogram
+aiocache
+uvloop
+
+requests
+fake-useragent
+beautifulsoup4
+lxml
+
+llama-index-core
+llama-index-llms-openai
+llama-index-embeddings-openai
+
+pytest
