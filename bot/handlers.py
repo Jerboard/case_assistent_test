@@ -4,7 +4,7 @@ from aiogram.enums.content_type import ContentType
 
 import logging
 
-from init import dp, query_engine
+from init import dp, eora_assist
 
 
 logger = logging.getLogger(__name__)
@@ -31,9 +31,9 @@ async def chat(msg: Message):
     try:
         sent = await msg.answer('⏳ Думаю')
 
-        response = query_engine.query(msg.text)
+        response = eora_assist.query(msg.text)
 
-        await sent.edit_text(str(response))
+        await sent.edit_text(response)
 
     except Exception as e:
         logger.exception(e, exc_info=True)

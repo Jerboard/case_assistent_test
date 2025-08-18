@@ -11,16 +11,15 @@ from fake_useragent import UserAgent
 
 from llama_index.core import Document, VectorStoreIndex
 
+
 logger = logging.getLogger(__name__)
-
-
-ua = UserAgent()
 
 
 @dataclass
 class EoraCaseIndexer:
     source_urls_path: Path
     vector_data_dir: Path
+    ua: UserAgent = UserAgent()
 
     # собираем данные со страницы
     def _extract_text(self, html: str) -> str:
@@ -55,7 +54,7 @@ class EoraCaseIndexer:
 
         session = requests.Session()
         session.headers.update({
-            "User-Agent": ua.chrome
+            "User-Agent": self.ua.chrome
         })
 
         for url in urls:
