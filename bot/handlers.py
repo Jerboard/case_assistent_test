@@ -31,9 +31,13 @@ async def chat(msg: Message):
     try:
         sent = await msg.answer('⏳ Думаю')
 
-        response = eora_assist.query(msg.text)
-
-        await sent.edit_text(response)
+        response = eora_assist.answer_text(msg.text)
+        # logger.warning(f'response: {response}')
+        try:
+            await sent.edit_text(response)
+        except Exception:
+            # Если ошибки в форматировании
+            await msg.answer(response, parse_mode=None)
 
     except Exception as e:
         logger.exception(e, exc_info=True)

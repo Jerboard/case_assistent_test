@@ -2,15 +2,10 @@ import logging
 
 from pathlib import Path
 from dataclasses import dataclass
-
-
-from llama_index.core import Document, VectorStoreIndex
 from llama_index.core import Settings, StorageContext, load_index_from_storage
 from llama_index.core.callbacks import CallbackManager, TokenCountingHandler
-from llama_index.core.agent.workflow import FunctionAgent
 from llama_index.embeddings.openai import OpenAIEmbedding
 from llama_index.llms.openai import OpenAI
-from llama_index.core.base.base_query_engine import BaseQueryEngine
 
 
 logger = logging.getLogger(__name__)
@@ -53,7 +48,6 @@ class Assistant:
         sources = []
         i = 1
         for node in response.source_nodes:
-            logger.warning(f'>>> {node}')
             url = node.metadata.get("url")
             if url:
                 sources.append(f'[<a href="{url}">{i}</a>]')
@@ -63,4 +57,6 @@ class Assistant:
             text += "\n\nИсточники:\n" + " ".join(sources)
 
         return text
+
+
 

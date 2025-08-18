@@ -10,7 +10,7 @@ services:
     volumes:
       - ../bot:/app
       - ../logs/bot:/app/logs
-#    restart: unless-stopped
+    restart: unless-stopped
 
     env_file:
       - .env

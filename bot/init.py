@@ -8,12 +8,11 @@ import asyncio
 import logging
 import uvloop
 
-from config import conf
-from assistant import Assistant
+from config import conf, prompts
+from objects import Assistant
 
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
-
 
 
 asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
@@ -27,8 +26,8 @@ bot = Bot(
 dp = Dispatcher()
 
 eora_assist = Assistant(
-    system_prompt=conf.system_prompt_hard,
-    vector_data_dir=conf.vector_data_dir
+    persist_dir=conf.persist_dir,
+    system_prompt=prompts.system_prompt_hard,
 )
 
 async def set_main_menu():
