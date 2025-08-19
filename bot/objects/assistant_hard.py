@@ -56,7 +56,7 @@ class Assistant:
 
         #  Запрашиваем вернуть строго JSON по нашей схеме
         self._program = OpenAIPydanticProgram(
-            tool_choice='auto',
+            tool_choice='required',
             output_cls=AnswerPayload,
             prompt=PromptTemplate(self.system_prompt),
             llm=OpenAI(**llm_kwargs),
