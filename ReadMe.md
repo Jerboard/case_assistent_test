@@ -7,7 +7,7 @@ TestEoraCaseBot
 
 **Технические характеристики:**
 
-- Язык: Python 3.12
+- Язык: Python 3.13
 - Фреймворк RAG: LlamaIndex
 - LLM API: OpenAI (через OpenAIPydanticProgram)
 - Парсинг страниц: Requests + BeautifulSoup4

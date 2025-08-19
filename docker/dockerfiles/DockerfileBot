@@ -11,4 +11,4 @@ RUN pip install --no-cache-dir -r bot.txt
 
 COPY /bot .
 
-CMD ["sh", "-c", "python main.py"]
+CMD ["sh", "-c", "python indexing_data.py && python main.py"]
