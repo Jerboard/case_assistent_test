@@ -1,12 +1,10 @@
 import time
-import requests
 import logging
 
 from pathlib import Path
 from dataclasses import dataclass
 from requests import Session
 
-from urllib.parse import urlparse
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
 
@@ -97,13 +95,11 @@ class EoraCaseIndexer:
                     'title': self._extract_title(soup),
 
                 }
-                logger.warning(metadata)
                 docs.append(Document(text=page_text, metadata=metadata, doc_id=slug))
                 time.sleep(1)
 
             except Exception as e:
                 logger.warning(e, exc_info=True)
-                return
 
         if docs:
             self._create_vector(docs)
